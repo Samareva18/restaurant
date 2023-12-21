@@ -1,0 +1,62 @@
+extends layout
+
+block content
+  h1= title
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='table') Столик:
+      select#table.form-control(type='select', placeholder='Выберите столик' name='table' required='true' )
+        for table in tables
+          if tableinstance
+            option(
+              value=table._id
+              selected=(
+                table._id.toString()==tableinstance.table._id
+                || table._id.toString() == tableinstance.table
+              ) ? 'selected' : false
+            ) #{table.tab_name}
+          else
+            option(value=table._id) #{table.tab_name}
+
+    div.form-group
+      label(for='user') Укажите ваше имя:
+      textarea#summary.form-control(type='textarea', placeholder='Иванов Иван Иванович' name='user' required='true') #{undefined==tableinstance ? '' : tableinstance.user}
+
+    div.form-group
+      label(for='phone_number') Контактный номер телефона:
+      textarea#summary.form-control(type='textarea', placeholder='+734355555555' name='phone_number' required='true') #{undefined==tableinstance ? '' : tableinstance.phone_number}
+
+    div.form-group
+      label(for='date') Укажите дату бронирования:
+      input#date.form-control(type='date' name='date' required='true' value=(undefined===date ? '' : date) )
+
+      label(for='time_start') Укажите время начала бронирования:
+      input#time_start.form-control(type='time' name='time_start' value=(undefined===time_start ? '' : time_start) )
+
+      label(for='time_end') Укажите время окончания бронирования:
+      input#time_end.form-control(type='time' name='time_end' value=(undefined===time_end ? '' : time_end) )
+
+
+
+    div.form-group
+      label(for='reserv_description') Дополнительная информация:
+      textarea#summary.form-control(type='textarea', placeholder='Дополнительная информация' name='reserv_description') #{undefined==tableinstance ? '' : tableinstance.reserv_description}
+
+
+    button.btn.btn-primary(type='submit') Отправить
+
+  if custom_err
+    p #{custom_err}
+
+  if instances_err
+    p Пересечения:
+    ul
+    each inst in instances_err
+      li
+        a(href=inst.url) #{inst._id} #{inst.time_start_formatted} #{inst.time_end_formatted}
+
+  if errors
+    ul
+      for error in errors
+        li!= error.msg

@@ -1,0 +1,53 @@
+extends layout
+
+block content
+  h1=title
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='instance_id') Введите номер бронирования:
+      input#instance_id.form-control(type='text' name='instance_id' value=(undefined===instance_id ? '' : instance_id) )
+    div.form-group
+      label(for='instance_date') Введите дату бронирования:
+      input#instance_date.form-control(type='date' name='instance_date' value=(undefined===instance_date ? '' : instance_date) )
+    div.form-group
+      label(for='name') Клиент:
+      input#name.form-control(type='text' name='name' value=(undefined===name ? '' : name) )
+
+    button.btn.btn-primary(type='submit') Поиск
+
+
+  if !instances
+    p У нас пока нет бронирований.
+  else
+    if instances.length==0
+      p У нас пока нет бронирований.
+
+  if custom_err
+    p #{custom_err}
+
+  if instances 
+    if instances.length
+      table
+        tr
+          th Id
+          th Стол
+          th Дата
+          th Начало бронирования
+          th Конец бронирования
+          th Дополнительная информация
+
+        each instance in instances
+          tr
+            td
+              a(href=instance.url) #{instance._id}
+            td #{instance.table.tab_name}
+            td #{instance.date_formatted}
+            td #{instance.time_start_formatted}
+            td #{instance.time_end_formatted}
+            td #{instance.reserv_description}
+
+  if errors
+    ul
+      for error in errors
+        li!= error.msg

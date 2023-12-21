@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  h1= title
+
+  //- ul
+  //- each instance in instances_list
+  //-   li
+  //-     a(href=instance.url) #{instance._id}
+  //-     |  #{instance.table.tab_name}
+  //-     |  Дата: #{instance.date_formatted},
+  //-     //- Баг: отображение времени релаьное вместо полученного из базы
+  //-     |  #{instance.time_start_formatted} - #{instance.time_end_formatted}
+
+
+  table
+    tr
+      th Id
+      th Стол
+      th Дата
+      th Время
+    each instance in instances_list
+      tr
+        td
+          a(href=instance.url) #{instance._id}
+        td  #{instance.table.tab_name}
+        td  #{instance.date_formatted}
+        td  #{instance.time_start_formatted} - #{instance.time_end_formatted}
+
+
+    else
+      tr
+        td У нас пока нет бронирований.

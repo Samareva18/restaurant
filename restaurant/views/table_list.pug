@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= title
+
+  ul
+  each table in table_list
+    li
+      a(href=table.url) #{table.tab_name}
+      |  Мест: #{table.chairs}.
+      |  Описание: #{table.description}
+
+  else
+    li У нас пока нет столиков.

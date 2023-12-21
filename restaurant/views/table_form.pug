@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1=title
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='tab_name') Название стола:
+      input#tab_name.form-control(type='text' placeholder='Стол №231' name='tab_name' required='true' value=(undefined===table ? '' : table.tab_name) )
+      label(for='chairs') Количество мест:
+      input#chairs.form-control(type='Number' placeholder='8' name='chairs' required='true' value=(undefined===table ? 1 : table.chairs))
+      label(for='description') Описание стола:
+      input#description.form-control(type='text' placeholder='Стол у окна' name='description' value=(undefined===table ? '' : table.description) )
+
+    button.btn.btn-primary(type='submit') Добавить
+  if errors
+    ul
+      for error in errors
+        li!= error.msg

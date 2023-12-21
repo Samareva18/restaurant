@@ -1,0 +1,88 @@
+body {
+  margin: 0;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  background-color: #fff;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.sidebar-nav {
+  margin-top: 20px;
+  padding: 0;
+  list-style: none;
+}
+
+table {
+  width: 100%; 
+  border: 0;
+}
+
+td {
+  word-wrap: break-word;
+  max-width: 150px;
+}
+
+.navbar_n {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  /* padding: 0.5rem 1rem; */
+}
+
+.nav-item {
+  list-style-type: none;
+  list-style: none;
+}
+
+.navbar-nav .nav-link {
+  padding-right: 2rem;
+  /* padding-left: 1rem; */
+  color: #ffffff;
+  text-decoration: none;
+  list-style-type: none;
+
+  min-height: 4rem;
+  /* box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 5%), inset 0 -1px 0 rgb(0 0 0 / 10%); */
+}
+
+.bd-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1071;
+
+  min-height: 4rem;
+  background-color: #aacd11;
+}
+
+.flex-md-row {
+  -webkit-box-orient: horizontal!important;
+  -webkit-box-direction: normal!important;
+  -ms-flex-direction: row!important;
+  flex-direction: row!important;
+}
+
+.navbar-expand {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+

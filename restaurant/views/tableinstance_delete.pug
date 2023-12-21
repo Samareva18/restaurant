@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1 #{title}: #{tableinstance._id}
+  p Дата: #{tableinstance.date_formatted}
+  p Клиент: #{tableinstance.user}
+  p Контактный номер: #{tableinstance.phone_number}
+
+
+  p Вы действительно хотите удалить бронь?
+  form(method='POST' action='')
+    div.form-group
+    input#tableinstanceid.form-control(type='hidden',name='tableinstanceid', required='true', value=tableinstance._id )
+
+    button.btn.btn-primary(type='submit') Удалить

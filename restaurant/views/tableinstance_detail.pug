@@ -1,0 +1,23 @@
+extends layout
+
+block content
+
+  h1 Бронь #{instance.id}
+  a(href=table.url) #{table.tab_name}
+  hr
+  p Дата: #{instance.date_formatted}
+  p Время: #{instance.time_start_formatted} - #{instance.time_end_formatted}
+  p Количество мест: #{table.chairs}
+  p Клиент: #{instance.user}
+  p Контактный номер: #{instance.phone_number}
+
+  if instance.reserv_description
+    p Дополнительная информация: #{instance.reserv_description}
+
+
+  hr
+  p
+    a(href=instance.url+'/update') Изменить бронирование
+  p
+    a(href=instance.url+'/delete') Удалить бронирование
+

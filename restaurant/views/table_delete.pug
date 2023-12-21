@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  h1 #{title}: #{table.tab_name}
+  p Мест: #{table.chairs}
+
+  if tableinstances.length
+
+    p #[strong Перед удалением стола следует удалить бронирования.]
+
+    div(style='margin-left:20px;margin-top:20px')
+
+      h4 Бронирования
+
+      dl
+      each instance in tableinstances
+        dt
+          a(href=instance.url) #{instance._id}
+        dd #{instance.user}
+
+  else
+    p Вы действительно хотите удалить стол?
+
+    form(method='POST' action='')
+      div.form-group
+        input#tableid.form-control(type='hidden',name='tableid', required='true', value=table._id )
+
+      button.btn.btn-primary(type='submit') Удалить

@@ -1,0 +1,41 @@
+extends layout
+
+block content
+
+  h1 #{table.tab_name}
+  p Количество мест: #{table.chairs}
+  p Описание: #{table.description}
+
+  div(style='margin-left:20px;margin-top:20px')
+
+    h4 Бронирования
+
+    form(method='POST' action='')
+      div.form-group
+        label(for='date') На дату:
+        input#date.form-control(type='date' name='date' required='true' value=(undefined===date ? Date.now() : date) )
+
+      div.form-group
+        button.btn.btn-primary(type='submit') Показать
+
+    div.form-group
+      p #{date_form}
+      dl
+        if tableinstances 
+          if tableinstances.length
+            each instance in tableinstances
+              dt
+                a(href=instance.url) #{instance._id}
+              dd Клиент: #{instance.user}
+              dd Телефон: #{instance.phone_number}
+              dd Время бронирования: #{instance.time_start_formatted} - #{instance.time_end_formatted}
+          else
+            p На эту дату нет бронирований.
+        else
+          p Выберите дату для отображения бронирований.
+
+  hr
+  p
+    a(href=table.url+'/update') Изменить стол
+  p
+    a(href=table.url+'/delete') Удалить стол
